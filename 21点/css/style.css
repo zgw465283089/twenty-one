@@ -1,0 +1,33 @@
+#container{width: 1000px;margin: 0 auto;height: 800px;}
+.desk{width: 1000px;height:700px;background: #ccc;position: relative;background: url(../img/desk1.jpg);padding-top: 100px;}
+.zhuangjia{width: 600px;height: 200px;text-align: center;margin: 5px auto;display: flex;flex-flow: row;justify-content: center;}
+.wanjia{width: 600px;height: 200px;text-align: center;margin: 5px auto;display: flex;flex-flow: row;justify-content: center;margin-top:50px ;}
+.xiazhu{position: absolute;bottom: 5px;right: 5px;width: 200px;height: 200px;}
+.control{width: 80px;height: 80px;position: absolute;left: 5px;bottom: 5px;}
+.card{width:138px;height: 180px;float: left;}
+.choose{width: 200px;height: 40px;text-align: center;display: flex;flex: row;justify-content: center;position: absolute;left: 50%;top: 680px;z-index: 1;margin-left: -100px;}
+#img{width: 100px;height: 100px;position: absolute;top: 5px;left: 5px;background: url(../img/face2.gif);}
+#pic_zhuang{width: 140px;height: 100px;position: absolute;left: 50%;margin-left: -70px;top: 0;}
+#pic_player{width: 100px;height: 100px;position: absolute;left: 50%;margin-left: -50px;top: 550px;}
+#money{width: 150px;height: 30px;position: absolute;right: 0;top: 400px;background: red;line-height: 30px;font-weight: bold;text-align: center;}
+#chouma{width: 150px;height: 30px;position: absolute;right: 0;top:440px;background: red;line-height: 30px;font-weight: bold;text-align: center;}
+#btn9{width: 80px;height: 80px;border-radius: 50%;background: pink;font-family: "微软雅黑";font-weight: bold;}
+#btn9:hover{background: #FF0000;}
+#btn1{width: 30px;height: 30px;border-radius: 50%;position: absolute;right: 180px;bottom: 5px;transition: all ease 0.5s; background: beige;border: none;}
+#btn2{width: 35px;height: 35px;border-radius: 50%;position: absolute;right: 160px;bottom: 50px;transition: all ease 0.5s;background: bisque;border: none;}
+#btn3{width: 40px;height: 40px;border-radius: 50%;position: absolute;right: 120px;bottom: 90px;transition: all ease 0.5s;background: burlywood;border: none;}
+#btn4{width: 45px;height: 45px;border-radius: 50%;position: absolute;right: 70px;bottom: 130px;transition: all ease 0.5s;background: firebrick;border:none ;}
+#btn1:hover{background: yellow;}
+#btn2:hover{background: orange;}
+#btn3:hover{background: red;}
+#btn4:hover{background: darkmagenta;}
+#btn5{width: 90px;height: 90px;border-radius: 50%;position: absolute;right: 5px;bottom: 5px;transition: all ease 0.5s; background: deeppink;border: none;font-family: "微软雅黑";
+font-size: 15px;font-weight: bold;}
+#btn5:hover{width: 100px;height: 100px;font-size: 20px;}
+.choose button{width: 50px;height: 50px;border-radius: 50%;border: none;background: #CCCCCC;transition: all ease 0.5s;}
+.choose button:hover{width: 60px;height: 60px;background: #FFA500;}
+#insurance{width: 250px;height: 80px;text-align: center;position: absolute;bottom: 50px;left: 50%;margin-left: -125px;background:#8B008B;display: none;z-index: 10;
+padding: 5px;font-weight: bold;font-size: 16px;color: #F5F5DC;border-radius: 5%;}
+#insurance button{width: 100px;height: 30px;text-align: center;background: #f9f9f9;border: 2px solid #dcdcdc;border-radius: 10%;margin-top:20px ;margin-left: 5px;color: #959595}
+#insurance button:hover{border: 2px solid #86c6f7;background: #FFC0CB;}
+#result{width: 400px;height: 80px;position: absolute;left: 50%;top: 285px;margin-left: -200px;text-align: center;color:#FF0000;font-weight: bold;font-size: 20px;font-family: "微软雅黑" sans-serif;line-height: 80px;}
