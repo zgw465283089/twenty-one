@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>任务19</title>
+		<style type="text/css">
+			.button{width:60px;height:15px;border-radius:6px;font-family: "微软雅黑";font-size: 4px;background: white;line-height: 9px;border-width: 1px;}
+			#div-list{display: flex;align-items: flex-end;height: 180px;justify-content:flex-start;padding: 5px;}
+			.biu{width:30px ;line-height: 20px;float: left;margin-left:5px ;margin-top:20px ;text-align: center;cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<input type="text"  id="text" value=""  />
+		<input type="button" name="left-in" id="left-in" value="左侧入" class="button"/>
+		<input type="button" name="right-in" id="right-in" value="右侧入" class="button"/>
+		&nbsp;&nbsp;
+		<input type="button" name="left-out" id="left-out" value="左侧出" class="button"/>
+		<input type="button" name="right-out" id="right-out" value="右侧出" class="button"/>
+		&nbsp;&nbsp;
+		<input type="button" name="" id="ran50" value="随机生成" class="button">
+		<input type="button" name="" id="sort" value="排序" class="button" />
+		<span id="div-list"></span>
+		<script>
+			var array= [];//用于遍历的数组
+			var str = "";
+			var divList = document.getElementById("div-list");
+			var oInput = document.getElementById("text");
+			function inputNum(){
+				var input = oInput.value.trim();
+				if(input>100||input<10){alert("数字必须大于10小于100");return 0}
+				if(array.length>60){alert("队列已满。。");return 0}
+				if(isNaN(input)){alert("请输入正确格式的数字");return 0}
+				if(input==""){alert("请输入内容");return 0}
+			}
+			function getRandomColor(){
+				return "#"+Math.floor(Math.random()*16).toString(16)+Math.floor(Math.random()*16).toString(16)+Math.floor(Math.random()*16).toString(16)
+						+Math.floor(Math.random()*16).toString(16)+Math.floor(Math.random()*16).toString(16)+Math.floor(Math.random()*16).toString(16);
+			}
+			//将数组进行遍历，形成div-list；
+			function render(){
+				var len =array.length;
+				var textList = "";
+				for(var i=0;i<len;i++){
+					textList +="<div class='biu' index='"+i+"' style='height:"+(array[i]*1.6)+"px;background:"+getRandomColor()+"'>"+array[i]+"</div>";
+				}
+				divList.innerHTML = textList;
+			}
+			function leftIn(){
+				if(inputNum()==0){return}
+				array.splice(0,0,oInput.value);
+				render();
+			}
+			function rightIn(){		
+				if(inputNum()==0){return}
+				array.push(oInput.value);
+				render();
+			}
+			function leftOut(){
+				
+				alert(array.shift());
+				render();
+			}
+			function rightOut(){
+				
+				alert(array.pop());
+				render();
+//				var length = divList.childNodes.length-1;
+//				var lastNode = divList.childNodes[length];//元素中的空格也会被视为节点
+//				lastNode.remove();
+////				var txt="";
+////				for(var i=0;i<divList.childNodes.length;i++){
+////					txt += divList.childNodes[i].nodeName;
+////				}
+//				alert(lastNode.innerHTML);
+			}
+			function disappear(){
+				divList.onclick=function(e){
+					e = window.event||e;
+					var target = e.srcElement||e.target;
+					if(target.tagName!="DIV")return;
+					array.splice(target.getAttribute("index"),1);
+					render();
+					
+				}
+			}
+			function randomCreate(){
+				array = [];
+				for(var i=0;i<50;i++){
+					array.push(Math.round(Math.random()*90)+10);
+				}
+				render();
+			}
+			//排序算法
+			function sort(){
+				var i=0,j=1,boom;
+				var len = array.length;
+				var timer=null;
+				timer=setInterval(run,25)
+				function run(){
+					if(i<len){
+						if(j<len){
+							if(array[i]>array[j]){
+								boom=array[i];
+								array[i]=array[j];
+								array[j]=boom;
+								render();
+							}	
+							j++;
+							
+						}else{
+							i++;
+							j=i+1;
+						}
+					}else{
+						clearInterval(timer);
+						return;
+					}
+				
+				}
+			}		
+			//绑定事件
+			var btnLeftIn = document.getElementById("left-in").addEventListener("click",leftIn);
+			var btnRightIn = document.getElementById("right-in").addEventListener("click",rightIn);
+			var btnLeftOut = document.getElementById("left-out").addEventListener("click",leftOut);
+			var btnRightOut = document.getElementById("right-out").addEventListener("click",rightOut);	
+			var ran = document.getElementById("ran50").addEventListener("click",randomCreate);
+			var sort = document.getElementById("sort").addEventListener("click",sort);
+			disappear();
+			
+		</script>
+	</body>
+</html>

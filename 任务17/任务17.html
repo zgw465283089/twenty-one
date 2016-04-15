@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>任务17</title>
+    <script src="js/task.js"></script>
+    <style type="text/css">
+    	.aqi-chart-wrap{border: 1px solid #000;width: 100%;height: 600px;}
+    	.list{float: left;position: relative;height: 100%;}
+    	.day{width: 10px;}
+    	.month{width: 50px;margin-left: 20px;}
+    	.week{width: 30;margin-left: 10px;}
+    	.high{position:absolute;bottom:0;width:100%}
+    </style>
+  </head>
+<body>
+  <fieldset id="form-gra-time">
+    <legend>请选择日期粒度：</legend>
+    <label>日<input name="gra-time" value="day" type="radio" checked="checked"></label>
+    <label>周<input name="gra-time" value="week" type="radio"></label>
+    <label>月<input name="gra-time" value="month" type="radio"></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>请选择查看的城市：</legend>
+    <select id="city-select">
+      <option>北京</option>
+    </select>
+  </fieldset>
+
+  <div class="aqi-chart-wrap">
+  </div>
+</body>
+</html>
