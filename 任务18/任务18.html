@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.button{width:60px;height:15px;border-radius:6px;font-family: "微软雅黑";font-size: 4px;background: white;line-height: 10px;border-width: 1px;}
+			.biu{width:50px ;height: 50px;line-height: 50px;background: red;float: left;margin-left:5px ;margin-top:20px ;text-align: center;cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<input type="text"  id="text" value=""  />
+		<input type="button" name="left-in" id="left-in" value="左侧入" class="button"/>
+		<input type="button" name="right-in" id="right-in" value="右侧入" class="button"/>
+		&nbsp;&nbsp;
+		<input type="button" name="left-out" id="left-out" value="左侧出" class="button"/>
+		<input type="button" name="right-out" id="right-out" value="右侧出" class="button"/>
+		
+		<div id="div-list"></div>
+		<script>
+			var divList = document.getElementById("div-list");
+			var oInput = document.getElementById("text");
+			function leftIn(){
+				var divText = divList.innerHTML;
+				divList.innerHTML = "<div class='biu'>"+oInput.value+"</div>"+divText;
+				
+			}
+			function rightIn(){				
+				divList.innerHTML += "<div class='biu'>"+oInput.value+"</div>";
+			}
+			function leftOut(){
+				var firstNode = divList.childNodes[0];				
+				divList.childNodes[0].remove();
+				alert(firstNode.innerHTML);
+				
+			}
+			function rightOut(){
+				var length = divList.childNodes.length-1;
+				var lastNode = divList.childNodes[length];//元素中的空格也会被视为节点
+				lastNode.remove();
+//				var txt="";
+//				for(var i=0;i<divList.childNodes.length;i++){
+//					txt += divList.childNodes[i].nodeName;
+//				}
+				alert(lastNode.innerHTML);
+			}
+			function disappear(){
+				divList.onclick=function(e){
+					e = window.event||e;
+					var target = e.srcElement||e.target;
+					target.remove();
+				}
+			}
+			var btnLeftIn = document.getElementById("left-in");
+			btnLeftIn.addEventListener("click",leftIn);
+			var btnRightIn = document.getElementById("right-in");
+			btnRightIn.addEventListener("click",rightIn);
+			var btnLeftOut = document.getElementById("left-out");
+			btnLeftOut.addEventListener("click",leftOut);
+			var btnRightOut = document.getElementById("right-out");
+			btnRightOut.addEventListener("click",rightOut);
+			disappear();
+			
+		</script>
+	</body>
+</html>
