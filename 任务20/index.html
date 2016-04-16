@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>任务20</title>
+		<style type="text/css">
+			#charAqi{width: 100%;margin-top: 30px;}
+			.square{height: 50px;display: inline-block;width: auto;background: pink;min-width: 30px;text-align: center;line-height: 50px;
+					float: left;margin-left: 10px;}
+			.select{background: red;}		
+		</style>
+	</head>
+	<body>
+		<textarea id="textInput" name="" rows="" cols=""></textarea>
+		<button id="insert">插入</button>
+		<input id="search_content" type="text" name="" id="" value="" />
+		<button id="search">查询</button>
+		<ul id="charAqi">
+			
+		</ul>
+		<script type="text/javascript">
+			var str = "";
+			var arr = [];
+			//返回得到的有效数组
+			function getArr(){
+				var textInput = document.getElementById("textInput");
+				var strValue = textInput.value;
+				var reg = /[^\u4e00-\u9fa5a-zA-Z0-9]/ ;
+				var arr1 = strValue.split("");
+				for(var i=0;i<arr1.length;i++){
+					if(reg.test(arr1[i])){
+						arr1.splice(i,1," ");
+					}
+				}	
+				strValue = arr1.join("");
+				arr1 = strValue.split(" ");
+				for(var i = 0;i<arr1.length;i++){
+					if(arr1[i]!=""){
+						arr.push(arr1[i]);
+					}
+				}
+				
+			}
+			
+			//通过数组生成li
+			function createList(){
+				var search = document.getElementById("search_content");
+				var searchContent = search.value;
+				var charAqi = document.getElementById("charAqi");
+				var aLi = charAqi.getElementsByTagName("li");
+				var textList = "";
+				var len = arr.length;
+				for(var i=0;i<len;i++){
+					var liArray = arr[i].split("");	
+					textList += "<li class='square'>";
+					for(var j=0;j<liArray.length;j++){
+						if(liArray[j]==searchContent){
+							textList += "<span class='select'>"+liArray[j]+"</span>";
+						}else{
+							textList += liArray[j];
+						}
+					}
+					textList += "</li>";
+				}
+				charAqi.innerHTML = textList;
+			}
+			
+		
+			document.getElementById("insert").onclick = function(){
+				getArr();
+				createList();
+			};
+			document.getElementById("search").onclick = function(){
+				createList();
+			}
+		</script>
+	</body>
+</html>
